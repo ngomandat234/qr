@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/head.ejs') %>
+  <body>
+    <%- include('../../partials/loader.ejs') %>
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <%- include('../../partials/main-header.ejs') %>
+      <div class="page-body-wrapper sidebar-icon">
+        <%- include('../../partials/sidebar.ejs') %>
+        <div class="page-body">
+          <div class="container-fluid">
+            <div class="page-header">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>User Profile</h3>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
+                    <li class="breadcrumb-item">User</li>
+                    <li class="breadcrumb-item active">profile</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid blog-page">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                          <h4 class="card-title mb-0">My Profile</h4>
+                          <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                          <form>
+                            <div class="row mb-2">
+                              <div class="profile-title">
+                                <div class="media">                        
+                                    <img class="img-70 rounded-circle" alt="" src="../assets/images/user/7.jpg">
+                                    <div class="media-body">
+                                        <h3 class="mb-1 f-20 txt-primary"><%= current_user.name %></h3>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Email-Address</label>
+                              <input class="form-control" value="<%= current_user.email %>" disabled>
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Password</label>
+                              <input class="form-control" type="password" name="password_confirmation" placeholder="******">
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Password Confirmation</label>
+                              <input class="form-control" type="password" name="password_confirmation" placeholder="******">
+                            </div>
+                            <div class="form-footer">
+                              <button class="btn btn-primary btn-block">Update Password</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                          <h4 class="card-title mb-0">Edit Profile</h4>
+                          <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+                        </div>
+                        <div class="card-body">
+                          <form>
+                            <div class="mb-3">
+                              <label class="form-label">Name</label>
+                              <input class="form-control" placeholder="Ngo Man Dat" value="<%= current_user.name %>">
+                            </div>
+                            <div class="form-footer">
+                              <button class="btn btn-primary btn-block">Save</button>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- tap on top starts-->
+        <div class="tap-top"><i class="icon-control-eject"></i></div>
+        <!-- tap on tap ends-->
+        <!-- footer start-->    
+      </div>
+    </div>
+    <%- include('../../partials/scripts.ejs') %>
+  </body>
+</html>

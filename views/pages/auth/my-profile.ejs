@@ -69,15 +69,25 @@
                           <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
                         </div>
                         <div class="card-body">
-                          <form>
-                            <div class="mb-3">
-                              <label class="form-label">Name</label>
-                              <input class="form-control" placeholder="Ngo Man Dat" value="<%= current_user.name %>">
+                          <div class="row">
+                            <div class="col-6">
+                              <form>
+                                <div class="mb-3">
+                                  <label class="form-label">Name</label>
+                                  <input class="form-control" placeholder="Ngo Man Dat" value="<%= current_user.name %>">
+                                </div>
+                                <div class="form-footer">
+                                  <button class="btn btn-primary btn-block">Save</button>
+                                </div>
+                              </form>
                             </div>
-                            <div class="form-footer">
-                              <button class="btn btn-primary btn-block">Save</button>
+                            <div class="col-6">
+                              <div class="w-50 float-end">
+                                <img src="<%= current_user.qrCode %>" alt="" class="w-100 h-100">
+                              </div>
                             </div>
-                          </form>
+                          </div>
+                          
                         </div>
                     </div>
                 </div>

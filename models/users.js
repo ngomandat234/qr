@@ -11,7 +11,11 @@ const User = new mongoose.Schema({
     },
     password: {
         type: String,
-        default: '',
+        default: ''
+    },
+    qrCode: {
+        type: String,
+        default: ''
     },
     createdAt: {
         type: Date,
@@ -20,7 +24,11 @@ const User = new mongoose.Schema({
     status:{
         type: Number,
         default: 1
-    }
+    },
+    trackings: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'qr_tracking'
+    }]
 });
 
 module.exports = mongoose.model('user', User);

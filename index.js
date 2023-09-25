@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
@@ -12,6 +13,9 @@ var passport = require('./config/passport');
 const checkAuthenticate = require('./middleware/auth');
 const saltRounds = 10;
 const bcrypt = require("bcrypt");
+const {generateTracking} = require('./lib/qrcode');
+const moment = require("moment");
+
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -76,6 +80,7 @@ app.post('/register', async (req, res) => {
     try{
         const user = new User(req.body);
         user.password = await bcrypt.hash(user.password, saltRounds)
+        user.qrCode = await generateTracking(user._id)
         await user.save();
         res.redirect('/login')
     }catch(err){
@@ -94,6 +99,31 @@ app.get('/logout', (req, res) =>{
         res.redirect('/');
     });
 })
-app.listen(3000, (req, res) =>{
-    console.log('app run 3000');
+
+const QrTracking = require('./models/qr_tracking')
+const mongoose = require('mongoose')
+app.get('/tracking/:userId', (req, res) => {
+    const { userId } = req.params
+    const time_now = moment()
+    const tracking = new QrTracking({
+        user: userId
+    })
+
+    try{
+        tracking.save()
+        res.status(200).json({
+            status: 200,
+            data: tracking
+        })
+    }catch(e){
+        res.send("404")
+    }
+})
+
+const route = require('./routes')
+route(app)
+
+const port = process.env.PORT || 3000;
+app.listen(port, () =>{
+    console.log(`App run port: ${port}`);
 })

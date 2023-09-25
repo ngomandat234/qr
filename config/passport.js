@@ -22,9 +22,9 @@ passport.use(new LocalStrategy({
         User.findOne({
             email
         }).then((user) => {
-            // if (!user){
-            //     return done(null, false, { message: 'Incorrect username' });
-            // }
+            if (!user){
+                return done(null, false, { message: 'Incorrect username' });
+            }
             // if (user.password === password){
             //     return done(null, user);
             // }else{

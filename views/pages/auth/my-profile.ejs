@@ -87,9 +87,34 @@
                               </div>
                             </div>
                           </div>
-                          
                         </div>
                     </div>
+                    <div class="card">
+                      <div class="card-header pb-0">
+                        <h4 class="card-title mb-0">Edit Profile</h4>
+                        <div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
+                      </div>
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-6">
+                            <form method="POST" action="/my-profile/change_avatar" enctype="multipart/form-data">
+                              <div class="mb-3">
+                                <label class="form-label">avatar</label>
+                                <input type="file" class="form-control-file" name="img" id="input_avt" required>
+                              </div>
+                              <div class="form-footer">
+                                <button class="btn btn-primary btn-block">Save</button>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="col-6">
+                            <div class="w-50 float-end">
+                              <img src="/uploader/<%= current_user.avatar %>" alt="" class="w-100 h-100" id="avt_user" style="width: 236px; height: 238px;" >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
                 </div>
             </div>
           </div>
@@ -101,6 +126,11 @@
         <!-- footer start-->    
       </div>
     </div>
+    <script>
+      document.getElementById('input_avt').addEventListener('change', () =>{
+        document.getElementById('avt_user').src = URL.createObjectURL(document.getElementById('input_avt').files[0]);
+      })
+    </script>
     <%- include('../../partials/scripts.ejs') %>
   </body>
 </html>

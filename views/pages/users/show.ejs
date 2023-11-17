@@ -49,10 +49,16 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
-                            <tr>
-                                <td class="py-3"><strong>QrCode</strong></td>
-                                <td class="py-3"><img src="<%= user.qrCode %>" alt="code-<%= user._id %>"></td>
-                            </tr>
+                          <div class="row">
+                            <div class="col-6">
+                              <p><strong>QrCode</strong></p>
+                              <img src="<%= user.qrCode %>" alt="code-<%= user._id %>">
+                            </div>
+                            <div class="col-6">
+                              <p><strong>Avatar</strong></p>
+                              <img src="/uploader/<%= user.avatar %>" alt="code-<%= user._id %>" style="width: 164px; height: 164px; object-fit:contain; border: 1px solid #888; padding: 4px; border-radius: 4px;">
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>

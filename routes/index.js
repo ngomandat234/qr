@@ -9,6 +9,62 @@ const fs = require('fs');
 const { render } = require('ejs');
 
 module.exports = function route(app){
+    app.get('/api/users/:id', async(req,res) => {
+        const _id = req.params.id;
+        if (!_id){
+            res.status(400).json({
+                status: 400,
+                data: null,
+                message: '1'
+            })
+            return
+        }
+
+        const user = await User.findOne({_id})
+        if (!user){
+            res.status(400).json({
+                status: 400,
+                data: null,
+                message: '2'
+            })
+            return
+        }
+
+        res.status(200).json({
+            status: 200,
+            data: {
+                _id: user._id, 
+                name: user.name,
+                email: user.email, 
+                avatar: user.avatar, 
+                qrCode: user.qrCode
+            }
+        })
+    })
+
+    app.get('/api/users', async(req, res) => {
+        const fetch = (users) =>{
+            return users.map(item => {
+                return {_id: item._id}
+            })
+        }
+        const users = await User.find()
+        const datas = fetch(users);
+        if (!users){
+            res.status(400).json({
+                status: 400,
+                data: null,
+                message: 'no data'
+            })
+            return
+        }
+    
+        res.status(200).json({
+            status: 200,
+            datas: datas
+        })
+    })
+
     app.get('/users/search', async(req, res) => {
         const avatar_name = req.query.avatar_name;
         if (!avatar_name){

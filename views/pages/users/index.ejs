@@ -40,7 +40,10 @@
                       <% users.forEach((item, index) => { %>
                         <tr>
                           <td><%= index + 1 %></td>
-                          <td><%= item.name %></td>
+                          <td>
+                            <img src="/uploader/<%= item.avatar %>" alt="<%= item.avatar %>" style="width: 80px; height: 80px; object-fit: contain;" />
+                            <%= item.name %>
+                          </td>
                           <td><%= item.email %></td>
                           <td><img src="<%= item.qrCode %>" alt="qrcode-<%= index + 1 %>" style="height:100px; width: 100px;"></td>
                           <td>

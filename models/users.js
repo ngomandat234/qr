@@ -21,6 +21,10 @@ const User = new mongoose.Schema({
         type: String,
         default: null,
     },
+    group_user: {
+        type: "String",
+        default: 'user'
+    },
     createdAt: {
         type: Date,
         default: Date.now()

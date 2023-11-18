@@ -22,6 +22,13 @@
 <!-- tap on top starts-->
 <div class="tap-top"><i class="icon-control-eject"></i></div>
 <!-- tap on tap ends-->
+<script src="../assets/js/sweet-alert/sweetalert.min.js"></script>
 <script>
     $('#user-table').DataTable();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    if (status == 'unauthorized'){
+        sweetAlert("Oops...", "Không có quyền truy cập dữ liệu này!", "error");
+    }
 </script>

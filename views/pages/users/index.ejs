@@ -50,11 +50,6 @@
                           <td><img src="<%= item.qrCode %>" alt="qrcode-<%= index + 1 %>" style="height:100px; width: 100px;"></td>
                           <td>                       
                               <a href="/users/<%= item._id %>" class="btn btn-primary">Tracking -></a>
-                              <% if (item.group_user == "admin") { %>
-                                <a href="/users/<%= item._id %>/set_role?status=2" class="btn btn-info">Set User</a>
-                              <% } else { %>
-                                <a href="/users/<%= item._id %>/set_role?status=1" class="btn btn-danger">Set Admin</a>
-                              <% } %> 
                           </td>
                         </tr>
                       <% }) %>
